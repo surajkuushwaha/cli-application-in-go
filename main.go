@@ -1,11 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 func main() {
 	// number
-	var age bool = true
-	fmt.Println("FPP", age)
+	// var age bool = true
+	// fmt.Println("FPP", age)
 
 	// Array
 	// names := [5]string{"suraj", "kushwaha", "vscode", "go", "terminal"}
@@ -40,5 +43,82 @@ func main() {
 	// }
 
 	// fmt.Println(suraj.Age)
+
+	// ifConditions()
+	loops()
+
+}
+
+func ifConditions() {
+	powerLever := 500
+
+	isOver9000 := powerLever >= 9000
+	if isOver9000 {
+		fmt.Println("It's over 9000")
+	} else {
+		fmt.Println("It is not over 9000")
+	}
+}
+
+func panicChecks() {
+	fruits := []string{"banana", "apple", "grapes", "pineapple"}
+
+	fruit := fruits[0]
+
+	switch fruit {
+	case "banana":
+		fmt.Println("It's banana")
+	default:
+		fmt.Println("not a banana")
+	}
+
+}
+
+func loops() {
+	fruits := []string{"banana", "apple", "grapes", "pineapple"}
+	x := 10
+	for x > 0 {
+		fmt.Println("Hello", x)
+		x--
+	}
+
+	for i := 0; i < len(fruits); i++ {
+		fmt.Println("It's ", fruits[i])
+	}
+
+	for i := range 10 {
+		fmt.Println("Hello from range loop: ", i)
+
+	}
+
+	fruits2 := []string{"banana", "apple", "grapes", "pineapple"}
+
+	for _, value := range fruits2 {
+		fmt.Println("Fruit | ", value)
+	}
+
+	brands := []string{"apple", "sumsung", "oneplus", "mi", "vivo"}
+
+	brandCategory := map[string]string{
+		"apple":   "premium",
+		"sumsung": "mix",
+		"oneplus": "budget",
+		"mi":      "low budget",
+		"vivo":    "low budget",
+	}
+
+	brands = append(brands, "nothing")
+
+
+	// iterate over array of stings
+	for _, value := range brands {
+		fmt.Println(value, "->", brandCategory[value])
+	}
+
+	fmt.Println("_________________________ Map loop ________________________")
+	// iterate over map
+	for key, value := range brandCategory {
+		fmt.Println(key, "->", value)
+	}
 
 }
