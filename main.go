@@ -1,8 +1,8 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"slices"
 )
 
 func main() {
@@ -16,9 +16,9 @@ func main() {
 	// fmt.Println("This is ", names[1])
 
 	// Slice : dynamic array
-	// names := []string{"suraj", "kushwaha", "vscode", "go", "terminal"}
-	// names = append(names, "last value")
-	// fmt.Println("This is ", names[len(names)-1])
+	// names := []string{"apple", "orange", "pineapple", "papaya", "guava"}
+	// names = append(names, "banana")
+	// fmt.Println("Last Fruit is:", names[len(names)-1])
 
 	// Map key value pair : similar to js object
 	// map[<key type>]<value type> : same type of restriction for the type of key like javascript
@@ -45,8 +45,56 @@ func main() {
 	// fmt.Println(suraj.Age)
 
 	// ifConditions()
-	loops()
+	// loops()
+	mapExample()
 
+}
+
+func mapExample() {
+	type NestedData map[string]map[string]map[string]string
+	// 1. Data Initialization:
+	// In JS, this is just a nested object literal.
+	// In Go, we must explicitly declare the full nested type: map[string]map[string]map[string]string
+	ages := NestedData{
+		"suraj": {
+			"foo": {
+				"foo": "foo",
+			},
+		},
+	}
+
+	// 2. The "Container":
+	// We declare 'foo' with the exact same structure as 'ages'.
+	// If the structure didn't match, Unmarshal would fail or skip fields.
+	var foo NestedData
+
+	// 3. Marshaling:
+	// Transform the Go map into a JSON byte slice ([]byte).
+	// JS Equivalent: const jsonData = JSON.stringify(ages);
+	jsonData, err := json.Marshal(ages)
+
+	// In Go, we check errors immediately (idiomatic "guard clause" pattern)
+	if err != nil {
+		fmt.Println("Error encoding JSON:", err)
+		return
+	}
+
+	// 4. Unmarshaling:
+	// We pass 'jsonData' (the source) and '&foo' (the destination address).
+	// '&' is essential because Unmarshal needs to modify the 'foo' variable directly.
+	// JS Equivalent: foo = JSON.parse(jsonData);
+	err = json.Unmarshal(jsonData, &foo)
+	if err != nil {
+		fmt.Println("Error decoding JSON:", err)
+		return
+	}
+
+	// 5. Output:
+	// 'jsonData' is []byte, so we must cast it to 'string' to see the JSON text.
+	fmt.Println("JsonData: ", string(jsonData))
+
+	// 'foo' is now populated with the data from the JSON
+	fmt.Println("foo: ", foo)
 }
 
 func ifConditions() {
@@ -108,7 +156,6 @@ func loops() {
 	}
 
 	brands = append(brands, "nothing")
-
 
 	// iterate over array of stings
 	for _, value := range brands {
