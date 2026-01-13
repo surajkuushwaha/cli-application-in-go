@@ -46,11 +46,84 @@ func main() {
 
 	// ifConditions()
 	// loops()
-	mapExample()
+	// mapExample()
+	// practicing()
+	// mapExample()
+	//
+	// Create your instances here
+	// printMultiples(5, 15)
+	// printStrongest(map[string]int{"Goku": 9001, "Vegeta": 8500, "Gohan": 8000})
+	fusedPower := fusionBoost(5000, 7000)
+	fmt.Println("Fused power level:", fusedPower)
 
 }
 
+// Complete the function signature
+func fusionBoost(powerLevel1 int, powerLevel2 int) int {
+	return (powerLevel1 + powerLevel2) * 10
+}
+
+func printStrongest(powerLevels map[string]int) {
+	// Your code here
+	var highestCharacterName string
+	var highestCharacterPower int
+	for name, power := range powerLevels {
+		if highestCharacterPower < power {
+			highestCharacterPower = power
+			highestCharacterName = name
+		}
+	}
+	fmt.Println(highestCharacterName, "is the strongest with ", highestCharacterPower)
+}
+
+func sumPowerLevels(levels []int) {
+	// Your code here
+	var sum int = 0
+	for _, value := range levels {
+		sum += value
+	}
+}
+
+func printMultiples(n uint, max uint) {
+	// Your code here
+	for i := n; i <= max; i += n {
+		fmt.Println(i)
+	}
+}
+
+func countDown(n int) {
+	// Your code here
+	for n > 0 {
+		fmt.Println(n)
+		n--
+	}
+}
+
+func countUp(num int) {
+	// Add your code here
+	var counter int = 0
+	for {
+		fmt.Println(counter)
+		counter++
+		if counter == num {
+			break
+		}
+
+	}
+}
+
+func practicing() {
+	var nums [5]int
+	nums[0] = 1
+	fmt.Println(nums)
+}
+
 func mapExample() {
+	foo1 := make(map[string]int)
+	foo1["Hello"] = 10
+	fmt.Print(foo1)
+	return
+
 	type NestedData map[string]map[string]map[string]string
 	// 1. Data Initialization:
 	// In JS, this is just a nested object literal.
@@ -110,9 +183,7 @@ func ifConditions() {
 
 func panicChecks() {
 	fruits := []string{"banana", "apple", "grapes", "pineapple"}
-
 	fruit := fruits[0]
-
 	switch fruit {
 	case "banana":
 		fmt.Println("It's banana")
