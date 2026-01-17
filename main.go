@@ -6,6 +6,10 @@ import (
 )
 
 func main() {
+	fmt.Println("Hello World")
+}
+
+func bac() {
 	// number
 	// var age bool = true
 	// fmt.Println("FPP", age)
@@ -55,7 +59,6 @@ func main() {
 	// printStrongest(map[string]int{"Goku": 9001, "Vegeta": 8500, "Gohan": 8000})
 	fusedPower := fusionBoost(5000, 7000)
 	fmt.Println("Fused power level:", fusedPower)
-
 }
 
 // Complete the function signature
