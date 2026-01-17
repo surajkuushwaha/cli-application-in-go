@@ -3,10 +3,12 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"os"
 )
 
 func main() {
-	fmt.Println("Hello World")
+	foo, _ := os.ReadFile("./words.txt")
+	fmt.Println(string(foo))
 }
 
 func bac() {
