@@ -8,7 +8,22 @@ import (
 
 func main() {
 	foo, _ := os.ReadFile("./words.txt")
-	fmt.Println(string(foo))
+
+	fmt.Println("Word Count:", CountWords(foo))
+}
+
+// Task: Implement the count words function
+func CountWords(data []byte) int {
+	const spaceChar = ' '
+	wordCount := 0
+	for _, value := range data {
+		if value == spaceChar {
+			wordCount++
+		}
+
+	}
+	wordCount++
+	return wordCount
 }
 
 func bac() {
